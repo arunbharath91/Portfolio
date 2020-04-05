@@ -3,7 +3,7 @@
 
 **No Bugs
 
-live demo:http://arunbharath.c1.biz/PluginDemo/Portfolio/
+live demo: http://arunbharath.c1.biz/PluginDemo/Portfolio/
 
 plugin author: M.Arun Bharath s/o A.Mathiyazhalagan
 
