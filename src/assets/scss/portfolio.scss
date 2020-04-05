@@ -1,0 +1,150 @@
+/*portfolio*/
+
+.d-block {
+  display: block !important;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.portfolio-item {
+  display: none;
+  cursor: pointer;
+}
+
+.port {
+  min-height: 500px;
+  display: flex;
+  margin-top: 15px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  padding: 7px 7px 27px;
+  border-top: 1px solid #F4F4F4;
+}
+
+.item {
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  padding: 7px 7px 27px;
+  border-top: 1px solid #F4F4F4;
+  margin-bottom: 1rem;
+}
+
+.portfolio-item img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.filter {
+  margin-bottom: 20px;
+}
+
+.fil-btn {
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: normal;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  line-height: normal;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  height: auto;
+  outline: none;
+  border: 1px solid;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  color: #555;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.fil-btn:hover {
+  text-decoration: none;
+}
+
+.fil-btn.active {
+  background: #333;
+  color: #fff;
+}
+
+::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.ajax-view {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  overflow: auto;
+  background: #ffffff;
+  background-color: #fafafa;
+  z-index: 10000;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.loader {
+  width: 100%;
+  background: #f6f6f6;
+  height: 100%;
+  display: flex;
+  z-index: 1111;
+  position: fixed;
+}
+
+.loader::after{
+  content:'';
+  border: 5px solid #f3f3f3;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  border-top: 5px solid #555;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  left: calc(50% - 50px);
+  top: calc(50% - 50px);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.port-nav {
+  position: fixed;
+  bottom: 5%;
+  left:40%;
+  z-index: 1004;
+}
+
+.port-nav button {
+  outline: none;
+  width: 50px;
+  border-radius: 50px;
+  margin: 15px;
+  background-position: center;
+  height: 50px;
+  border: 1px solid #dadada;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  display: flex;
+  float:left;
+  background-color: #fff;
+  background-size: 15px;
+  background-repeat: no-repeat;
+}
