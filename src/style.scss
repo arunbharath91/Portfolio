@@ -112,6 +112,12 @@ hr {
   height: 0;
 }
 pre {
+    display: block;
+    font-size: 87.5%;
+    color: #212529;
+    background-color: #f7f7f9;
+}
+pre {
   overflow: auto;
 }
 code,
