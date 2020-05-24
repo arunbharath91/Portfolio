@@ -10,7 +10,7 @@ export class Portfolio {
     this.initPortfolio();
   }
 
-  initPortfolio() {
+  private initPortfolio() {
     _s(`${this.selector} .fil-btn.active`).trigger('click');
 
     _s(`${this.selector} .fil-btn`).on('click', (e) => {
