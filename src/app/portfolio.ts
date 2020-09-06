@@ -10,7 +10,7 @@ export class Portfolio {
     this.initPortfolio();
   }
 
-  private initPortfolio() {
+  initPortfolio() {
     _s(`${this.selector} .fil-btn.active`).trigger('click');
 
     _s(`${this.selector} .fil-btn`).on('click', (e) => {
@@ -31,14 +31,14 @@ export class Portfolio {
     _s(`${this.selector} .portfolio-item`).removeClass('d-block');
     setTimeout(() => {
       _s(`${this.selector} .${this.filterActive}`).parent().addClass('d-block');
-    });
+    }, 10);
   }
 
   private lightboxViewer() {
-    _s(`${this.selector} .item`).on('click', (e) => {
+    const that = this;
+    _s(`${this.selector} .item`).on('click', function(e) {
       e.preventDefault();
-      const dataHref = (e.target.tagName === 'IMG') ? e.target.parentNode.getAttribute('data-href') : e.target.getAttribute('data-href');
-      this.lightboxConfig(dataHref);
+      that.lightboxConfig(this.getAttribute('data-href') as string);
     });
   }
 
@@ -115,13 +115,14 @@ export class Portfolio {
       _s(`${this.selector}`).after(`
       <div class="ajax-view animated fadeIn">
       <div class="port-nav">
-          <button type="button" class="port-prev">prev</button>
-          <button type="button" class="port-close">close</button>
-          <button type="button" class="port-next">next</button>
+          <button type="button" class="port-prev" title="previous">prev</button>
+          <button type="button" class="port-close" title="close">close</button>
+          <button type="button" class="port-next" title="next">next</button>
       </div>
       <div class="view-container">
 
       </div>
+
       </div>`);
     }
     _s(`${this.selector} + .ajax-view .view-container`).html(`<div class="loader"></div>`);
