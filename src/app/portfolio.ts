@@ -83,7 +83,7 @@ export class Portfolio {
           method: 'get'
         });
       }
-      e.stopPropogation();
+      e.stopPropagation();
     });
   }
 
