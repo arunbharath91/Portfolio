@@ -44,7 +44,8 @@
 
 .fil-btn.active {
   background: #2850a7;
-  color: #fff
+  color: #fff;
+  pointer-events: none;
 }
 
 .fil-btn:focus {
