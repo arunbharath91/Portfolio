@@ -16,7 +16,7 @@ export class Portfolio {
     _s(`${this.selector} .fil-btn`).on('click', (e) => {
       this.filterButton(e.target);
     });
-
+    _s(`${this.selector}`).after('<div class="ajax-view-cdk"></div>');
     this.lightboxViewer();
     this.navEventRegistration();
   }
@@ -36,7 +36,7 @@ export class Portfolio {
 
   private lightboxViewer() {
     const that = this;
-    _s(`${this.selector} .item`).on('click', function(e) {
+    _s(`${this.selector} .item`).on('click', function (e) {
       e.preventDefault();
       that.lightboxConfig(this.getAttribute('data-href') as string);
     });
@@ -58,15 +58,11 @@ export class Portfolio {
   }
 
   private navEventRegistration() {
-    document.addEventListener('click', (e: any) => {
+    _s('.ajax-view-cdk').on('click', (e: any) => {
       if (e.target && e.target.className == 'port-close') {
         document.body.style.overflowY = 'auto';
-        _s(`${this.selector} + .ajax-view`).remove();
-      }
-    });
-
-    document.addEventListener('click', (e: any) => {
-      if (e.target && e.target.className == 'port-next') {
+        _s(`${this.selector} + .ajax-view-cdk > .ajax-view`).remove();
+      } else if (e.target && e.target.className == 'port-next') {
         let nextIndex = this.sliderUrls.indexOf(this.currentSlide) + 1;
         if (nextIndex >= this.sliderUrls.length) {
           nextIndex = 0;
@@ -76,12 +72,7 @@ export class Portfolio {
           mode: 'no-cors',
           method: 'get'
         });
-      }
-    });
-
-
-    document.addEventListener('click', (e: any) => {
-      if (e.target && e.target.className == 'port-prev') {
+      } else if (e.target && e.target.className == 'port-prev') {
         let prevIndex = this.sliderUrls.indexOf(this.currentSlide) - 1;
         if (prevIndex < 0) {
           prevIndex = this.sliderUrls.length - 1;
@@ -92,6 +83,7 @@ export class Portfolio {
           method: 'get'
         });
       }
+      e.stopPropogation();
     });
   }
 
@@ -101,7 +93,7 @@ export class Portfolio {
     fetch(url, methods)
       .then((response) => {
         response.text().then((text) => {
-          _s(`${this.selector} + .ajax-view .view-container`).html(`${text}`);
+          _s(`${this.selector} + .ajax-view-cdk > .ajax-view > .view-container`).html(`${text}`);
         });
       })
       .catch((err) => {
@@ -112,7 +104,7 @@ export class Portfolio {
   private setViewContainer() {
     if (!document.querySelector(`.ajax-view`)) {
       document.body.style.overflowY = 'hidden';
-      _s(`${this.selector}`).after(`
+      _s(`${this.selector} + .ajax-view-cdk`).html(`
       <div class="ajax-view animated fadeIn">
       <div class="port-nav">
           <button type="button" class="port-prev" title="previous">prev</button>
@@ -120,11 +112,10 @@ export class Portfolio {
           <button type="button" class="port-next" title="next">next</button>
       </div>
       <div class="view-container">
-
       </div>
 
       </div>`);
     }
-    _s(`${this.selector} + .ajax-view .view-container`).html(`<div class="loader"></div>`);
+    _s(`${this.selector} + .ajax-view-cdk > .ajax-view > .view-container`).html(`<div class="loader"></div>`)
   }
 }
