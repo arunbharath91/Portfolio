@@ -49,7 +49,7 @@ export class Portfolio {
       this.sliderUrls.push(item.getAttribute('data-href') as string);
     },
       () => {
-        this.httpReq(`assets/ajax-lightbox/${dataHref}`, {
+        this.httpReq(`${dataHref}`, {
           mode: 'no-cors',
           method: 'get'
         })
@@ -72,7 +72,7 @@ export class Portfolio {
           nextIndex = 0;
         }
         this.currentSlide = this.sliderUrls[nextIndex];
-        this.httpReq(`assets/ajax-lightbox/${this.currentSlide}`, {
+        this.httpReq(`${this.currentSlide}`, {
           mode: 'no-cors',
           method: 'get'
         });
@@ -87,7 +87,7 @@ export class Portfolio {
           prevIndex = this.sliderUrls.length - 1;
         }
         this.currentSlide = this.sliderUrls[prevIndex];
-        this.httpReq(`assets/ajax-lightbox/${this.currentSlide}`, {
+        this.httpReq(`${this.currentSlide}`, {
           mode: 'no-cors',
           method: 'get'
         });
